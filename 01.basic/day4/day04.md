@@ -157,7 +157,7 @@ console.log(msg2.indexOf("𩸽あ"));
 Split pages by horizontal ruler (`---`). It's very simple! :satisfied:
 ```
 
-2. 以下の文字列中の各単語から{０}以下の文字を出力する。
+2. 以下の文字列中の各単語から「o」以下の文字を出力する。
 ```
 If you know how to write document with Markdown, you already know how to 
 write Marp slide deck too.
@@ -165,3 +165,80 @@ write Marp slide deck too.
 出力：ou,ow,ow,ocument...
 
 ---
+# 数値の種類
+* 10進数： 1234567890  //0777  8 進数として解析される
+* 8進数 ： 0o10
+* 2進数 ： 0b10000
+* 16進数 ： 0x123456789ABCDEF
+---
+# BigIntと指数
+* BigInt: 9007199254740991n  ; BigInt(9007199254740991);
+* 1e3: //1000
+
+---
+# 数字に関する処理プロパティと関数
+* Number.MAX_VALUE
+* Number.MIN_VALUE
+* Number.ParseFloat()
+* Number.ParseInt()
+* toFixed():数値の丸め処理。四捨五入
+* toPrecision():指定された精度で表した文字列を返します。
+  12.1233.toPrecision(5):12.123
+
+---
+# toFixed()の不思議の所
+* 12345.6789.toFixed()  // '12346' を返す :
+* 12345.6789.toFixed(1)  // '12345.7' を返す :
+* 2.35.toFixed(1)        // '2.4' を返す。切り上げ。
+* 2.55.toFixed(1)        // '2.5' を返す。切り捨て。
+
+---
+# toFixd()の強化
+資料を調べてみてください！
+
+---
+# 数学関数
+* abs() : 絶対値
+* sin(),cos(),tan():三角関数
+* Math.floor():与えられた数値以下の最大の整数を返します
+* Math.random(): 0 以上 1 未満 (0 は含むが、 1 は含まない) の範囲で浮動小数点
+* Math.round():与えた数を四捨五入して、もっとも近似の整数を返します。
+* Math.Max()
+* Math.min()
+
+---
+# 宿題
+５つ１００以下の乱数を生成して、配列に設定する。その中の最大値を見つかって出力する。
+
+---
+# 日付対象の作成
+* new Date()
+* new Date(1999,11,25)
+* new Date("2011-11-12")
+---
+# 関数
+* getFullYear();
+* setFullYear();
+* getTime()：ミリ秒
+* getMonth():0から
+* getDay(): 週
+* getDate(): 月のなん日
+* getTimezoneOffset() ：世界協定時と時差。分
+---
+# 関数
+* toDateString()
+* toTimeString()
+* toLocaleDateString()
+* toLocaleTimeString()
+* toUTCString()
+
+--- 
+# 宿題
+* 今の時間を「yyyy/MM/dd HH:mm:ss」フォーマットを出力する
+* 年末まで、残日数
+* 下記の人から、今日誕生日人の名前を出力する。
+　　王さん：1998-12-12、
+　　周さん：2000-3-1、
+　　張さん：１９９１ー１０ー１１、
+　　Aさん：1990-05-12,
+　　Bさん：2009-5-13　
