@@ -165,6 +165,11 @@ write Marp slide deck too.
 出力：ou,ow,ow,ocument...
 
 ---
+# 宿題
+3. 下記文字列中に「O」の所在位置のIndexのトータル値を求める
+    "dsfddsofdsafdsofe ofsa oo aadaofds"
+
+---
 # 数値の種類
 * 10進数： 1234567890  //0777  8 進数として解析される
 * 8進数 ： 0o10
