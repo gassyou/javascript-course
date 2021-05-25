@@ -190,7 +190,7 @@ let first = myArray.shift()
 ```
 
 ---
-# slice(start_index, upto_index)
+## slice(start_index, upto_index)
  配列の一部を抽出し、新しい配列を返します。
  start_indexからupto_indexまでの要素を抽出して返す。
  upto_indexの要素が含めていない
@@ -203,7 +203,7 @@ myArray = myArray.slice(1, 4)
 ```
 
 ---
-# splice(index, count_to_remove,addElment,...)
+## splice(index, count_to_remove,addElment,...)
  indexからcount_to_removeまでの要素を取り除き、
  そして、「addElment,...」の内容を挿入にする
 
@@ -227,8 +227,7 @@ myArray.reverse()
 ```
 
 ---
-# sort((a,b)=>{})
-
+## sort((a,b)=>{})
 ```js
 let myArray = new Array('Wind', 'Rain', 'Fire')
 myArray.sort((a,b)=>{
@@ -237,19 +236,19 @@ myArray.sort((a,b)=>{
   if (a[a.length - 1] == b[b.length - 1]) return 0;
 });
 ```
-* a[a.length - 1] が b[b.length - 1] より小さいとされた場合、 -1 を返します
-* a[a.length - 1] が b[b.length - 1] より大きいとされた場合、 1 を返します
-* a[a.length - 1] と b[b.length - 1] が等値と見なされる場合、 0 を返します
+* `aの最後文字がbの最後文字より小さいの場合、`-1`を返す
+* `aの最後文字がbの最後文字より大きいの場合、`1`を返す
+* `aの最後文字とbの最後文字が等値の場合、`0`を返す
 
 ---
-# indexOf(searchObj,formIndex)
+## indexOf(searchObj,formIndex)
 * 配列中に「searchObj」という要素が存在するかどうか検索する。
 * 最初に検索されたもののIndexを返す
 * formIndex:必須ではない
 * 見つかったない場合、「−１」を返す
 
 ---
-# lastIndexOf(searchObj,formIndex)
+### lastIndexOf(searchObj,formIndex)
 * 配列の後ろから「searchObj」という要素が存在するかどうか検索する。
 * 最初に検索されたもののIndexを返す
 * formIndex:必須ではない
@@ -301,7 +300,7 @@ console.log(a1.every(
 
 ```
 ---
-# reduce((accumulator,current)=>{})
+### reduce((accumulator,current)=>{})
 各要素の累計処理
 ```js
 let a = [10,20,30];
@@ -368,7 +367,7 @@ myMap.set("wang",null);
 myMap.delete("wang");
 ```
 ---
-# MapにKeyが存在するかどうか
+## MapにKeyが存在するかどうか
 ```js
 myMap.has("wang");
 ```
