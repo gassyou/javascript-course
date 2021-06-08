@@ -82,3 +82,64 @@ mySet.clear()
 
 
 for (let item of mySet) console.log(item);
+
+let as = "ooo";
+let aa = as.split("o");
+console.log(aa);
+console.log("----");
+
+let now = new Date();
+
+
+
+now.setDate(now.getDate()+10);
+console.log(now);
+
+
+let str = "012345o7o9oB DOF";
+
+let strArray = str.split("o");
+
+let indexs = [];
+let indexOfBeforeO = 0;
+strArray.forEach(x=>{
+    let wordLength = x.length;
+    let indexOfCurrentO = indexOfBeforeO + wordLength + 1;
+    indexOfBeforeO = indexOfCurrentO;
+    indexs.push(indexOfCurrentO);
+    console.log(indexOfCurrentO);
+});
+
+let total1 = 0;
+indexs.forEach(x=>{
+    total1 = total1 + x;
+});
+
+console.log(total1);
+
+
+
+let aaa = ['a','c','e','d','f','b','f','e'];
+
+console.log(aaa.sort());
+
+
+let aaa1 = [6,9,2,10,3,5,111,203];
+
+// console.log(aaa1.sort());
+
+console.log(aaa1.indexOf(10));
+
+
+
+// let bbb = aaa.splice(2,1,"aaa");
+// console.log(aaa);
+
+
+ 
+// let myArray = new Array('1', '2', '3', '4', '5');
+//  myArray.splice(1, 3, 'a', 'b', 'c', 'd')
+//  console.log(myArray);
+
+
+

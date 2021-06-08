@@ -27,10 +27,10 @@
 // console.log(msg2.codePointAt(3));
 // console.log(msg2.codePointAt(4));
 // console.log(msg2.codePointAt(5));
-let msg2 = 'あいう𩸽ういあ';
-console.log(msg2.substr(2,5));
-console.log(msg2.split(1,5));
-// console.log(msg2.startsWith("あいう"));
+// let msg2 = 'あいう𩸽ういあ';
+// console.log(msg2.substr(2,5));
+// console.log(msg2.split(1,5));
+// // console.log(msg2.startsWith("あいう"));
 
 // console.log(msg2.concat("sss"));
 
@@ -55,13 +55,13 @@ console.log(msg2.split(1,5));
 // // let d = new Date("2011-11-11");
 // // console.log(d.getFullYear());
 
-// // var today = new Date();
-// // var endYear = new Date(1995, 11, 31, 23, 59, 59, 999); // 月日を設定
-// // endYear.setFullYear(today.getFullYear()); // 今年の年を設定
-// // var msPerDay = 24 * 60 * 60 * 1000; // 一日をミリ秒に換算
-// // var daysLeft = (endYear.getTime() - today.getTime()) / msPerDay;
-// // var daysLeft = Math.round(daysLeft); // 今年の残り日数を返す
-// // console.log(daysLeft);
+var today = new Date();
+var endYear = new Date("2021-12-31"); // 月日を設定
+console.log(endYear);
+var msPerDay = 24 * 60 * 60 * 1000; // 一日をミリ秒に換算
+var daysLeft = (endYear.getTime() - today.getTime()) / msPerDay;
+var daysLeft = Math.round(daysLeft); // 今年の残り日数を返す
+console.log(daysLeft);
 
 // // console.log(today.toDateString());
 // // console.log(today.toTimeString());
@@ -72,10 +72,16 @@ console.log(msg2.split(1,5));
 // // console.log(today.getTimezoneOffset());
 
 // // console.log("this is'asssss");
-console.log(Number.MAX_VALUE);
+// console.log(Number.MAX_VALUE);
 
-let bb = [22,22,333,11,22];
-console.log(Math.max( [22,22,333,11,22]));
-console.log(Math.max(22,222,444,222222));
+// let bb = [22,22,333,11,22];
+// console.log(Math.max( [22,22,333,11,22]));
+// console.log(Math.max(22,222,444,222222));
 
-console.log(Math.random());
+// console.log(Math.random());
+
+// new Date().getMinutes()
+console.log(endYear);
+console.log(today);
+
+console.log(today.getMonth());
