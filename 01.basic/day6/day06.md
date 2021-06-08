@@ -60,6 +60,7 @@ const square = (number)=>{
 ```
 ---
 # 関数の呼び出し
+* 関数を定義した後、呼び出しないと関数中のソースコードが実行されないです。
 ```javascript
 let number = 5;
 let result = square(number);
