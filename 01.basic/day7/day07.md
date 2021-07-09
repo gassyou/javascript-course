@@ -69,6 +69,46 @@ toyota.run();
 `new`キーワード。対象のインスタンスを作成。対象の定義は、金型ようなものです。`new`は金型で製品を作成する。
 
 ---
+## 対象の定義と使いーーTypescirpt
+``` typescript
+class Car {
+  engine: number;
+  wheel: number;
+  constructor(engine: number, wheel: number) {
+    this.engine = engine;
+    this.wheel = wheel;
+  }
+  run() {
+    console.log(`speeds:${this.engine * this.wheel}`);
+  }
+}
+
+let myCar: Car = new Car(2,4);
+myCar.run();
+
+```
+
+---
+## 対象の定義と使いーーJAVA
+``` java
+public class Car {
+  public int engine;
+  public int wheel;
+  public Car(int engine, int wheel) {
+    this.engine = engine;
+    this.wheel = wheel;
+  }
+  run() {
+    console.log(`speeds:${this.engine * this.wheel}`);
+  }
+}
+
+Car myCar = new Car(2,4);
+myCar.run();
+
+```
+
+---
 # 対象の直接初期化
 ``` js
 let car = {
@@ -85,7 +125,7 @@ car.run();
 * `engine`,`wheel`対象のプロパティです。値：文字列、数字、配列、Boolean、関数、対象等など
 
 ---
-### プロパティの列挙
+#### プロパティの列挙
 for...in
 ```js
 for (let i in car) {
@@ -103,7 +143,6 @@ for (let i of p) {
     }
 }
 ```
-
 ---
 # プロパティの使い方
 ```js

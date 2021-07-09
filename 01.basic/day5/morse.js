@@ -28,8 +28,10 @@ morse.set('z',"--..");
 
 const result = new Set();
 
-["gin", "zen", "gig", "msg"].forEach(
-    item => {
+let myArray = ["GIN", "zen", "gig", "msg",'adljc']
+
+myArray.forEach(
+    (item) => {
         const encodeString = changeToMorse(item,morse);
         console.log(encodeString);
         result.add(encodeString);
@@ -40,7 +42,7 @@ console.log(result.size);
 
 function changeToMorse(text,morseCode) {
     text = text.toLowerCase();
-    morseText='';
+    morseText = '';
     for(let char of text) {
         morseText = morseText + morseCode.get(char);
     }
