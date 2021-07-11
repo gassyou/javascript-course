@@ -237,6 +237,18 @@ let a =new Promise((resolve, reject) => {
 ```
 
 ---
+# 例３
+* then 関数を読み出さないと、コールバック関数が実施しないです。
+```js
+c = new Promise((resolve, reject) => {
+    resolve('aa');
+});
+console.log("bb");
+console.log("cc");
+c.then((value) => {console.log(value)});
+```
+
+---
 # catch関数
 * catch関数のパラメータも関数です。
 * Promiseパラメータ関数中のソースコードが異常が発生する場合、catchの関数が実行される
@@ -250,6 +262,166 @@ c = new Promise((resolve, reject) => {
 })
 
 ```
+---
+# resolve静態関数
+```js
+let a = Promise.resolve(1);
+
+// 下記と同じ効果
+let b = new Promise((resolve, reject)=>{
+    resolve(1);
+});
+
+```
+
+---
+# all静態関数
+* 複数のPromiseのresolve結果を配列に設定して処理する
+
+```js
+let a = Promise.resolve("aaaa");
+let b = Promise.resolve("bbbb");
+let c = Promise.resolve("cccc");
+
+Promise.all([a,b,c]).then(([value, value2,value3])=>{
+    console.log(value);
+    console.log(value2);
+    console.log(value3);
+},([v1,v2,v3])=>{
+    console.log(v1);
+    console.log(v2);
+    console.log(v3);
+});
+```
+---
+* allで処理するRejectがあれば、結果はRejectの値になる
+```js
+let a = Promise.resolve("aaaa");
+let b = Promise.reject("bbbb");
+let c = Promise.resolve("cccc");
+
+Promise.all([a,b,c]).then(([value, value2,value3])=>{
+    console.log(value);
+    console.log(value2);
+    console.log(value3);
+},([v1,v2,v3])=>{
+    console.log(v1);
+    console.log(v2);
+    console.log(v3);
+});
+```
+---
+
+# race静態関数
+* 複数のPromise中に、一つ結果をResovle、その結果を処理する
+```js
+let a = Promise.resolve("aaaa");
+let b = Promise.reject("bbbb");
+let c = Promise.resolve("cccc");
+
+Promise.race([a,b,c]).then((value)=>{
+    console.log(value);
+},(v1)=>{
+    console.log(v1);
+})
+```
+
+---
+# コールバック関数地獄の回避
+
+```js
+let namePromise = new Promise((resolve, reject) => {
+    $.get('/get-user-name',function(name){
+        resolve(name);
+    });
+}).then((name)=>{
+    return new Promise((resolve, reject)=>{
+        $.get(`/get-user-phone-number?${name}`,function(phone){
+            resolve(phone);
+        });
+    })
+}).then((phone)=>{
+   // メッセージの送信処理
+})
+```
+
+---
+# async と　await
+```js 
+function getName() {
+    return new Promise((resolve, reject) => {
+        $.get('/get-user-name',function(name){
+            resolve(name);
+        });
+    });
+}
+
+function getPhone(name) {
+    return new Promise((resolve, reject)=>{
+        $.get(`/get-user-phone-number?${name}`,function(phone){
+            resolve(phone);
+        });
+    })
+}
+```
+---
+```js
+async function doIt() {
+    const name = await getName();
+    const phone = await getPhone(name);
+    // メール送信
+    sendSMS(phone)
+} 
+```
+* awaitは、Promiseの返す関数前に使えます。
+* awaitは、async定義した関数中しか使えないです。
+
+---
+
+###### Promise対象の実現-ご参考
+```js
+function Promise(executor) {
+  var _this = this;
+  _this.status = 'pending'; 
+  _this.data = undefined ; 
+  _this.onResolvedCallback = []; 
+  _this.onRejectedCallback = []; 
+  //resolve
+  function resolve(value){
+    setTimeout(function(){ 
+      if(_this.status == 'pending'){
+          _this.status = 'resolved';
+          _this.data = value;
+      }
+    for(var i=0;i< _this.onResolvedCallback.length;i++){
+      _this. _this.onResolvedCallback[i](value);
+    }
+   });
+  }
+
+```
+---
+```js
+  //reject
+  function reject(reason){
+    setTimeout(function(){ 
+      if(_this.status == 'pending'){
+          _this.status ='rejected';
+          _this.data = reason;
+      }
+      for(var i=0;i< _this.onRejectedCallback.length;i++){
+        _this.onRejectedCallback[i](reason);
+      }
+    });
+  }
+  try {
+      executor(resolve, reject)
+  }catch(e){
+      reject(e);
+  }
+}//end
+```
+
 ---
 
 # 宿題
