@@ -43,6 +43,8 @@ SMSメッセージの送信がかかるので、保存処理も時間かかる�
 ```
 ユーザー情報保存開始→→→→→→→情報をDBに保存→→→→→→プログラムを終了
                    ↓
+                   ↓
+                   ↓
                    →→→→→SMSメッセージを送信
 ```
 ---
@@ -74,6 +76,7 @@ console.log("bbbb");
 ```
 setTimeout関数は、指定の時間の毎に、なにか関数を実行する。
 ```
+
 
 ---
 # コールバック関数地獄
@@ -154,6 +157,9 @@ public class StaffSalary {
     }
 }
 ```
+
+`static`キーワードで定義した関数は静態関数です。
+
 ---
 # 質問
 <!-- _backgroundColor: #a5f7fa -->
@@ -161,4 +167,95 @@ public class StaffSalary {
 ヒント：Math,Object対象など
 
 ---
+# Promiseの作成
+```js
+let namePromise = new Promise(function(resolve,reject){
+    $.get('/get-user-name',function(name){
+        resolve(name);
+    });
+});
+```
+
+* Promiseの作成時に、一つ関数をパラメータとして入力する必要です。
+* 該当関数は、２つパラメータが必要：resolve,reject。
+* resolve,rejectはPromise対象に既存する関数です。
+* rejectは必須ではないです。
+---
+# then 関数
+* コールバック関数は「then」関数で設定する
+* then関数は２つパラメータが必要です。
+```js
+namePromise.then((value)=>{
+    console.log(value);
+},(value)=>{
+    console.log(value);
+});
+```
+---
+
+# resolve とreject関数
+* resolveとrejectの作用は、コールバック関数に発信する。
+* Then()パラメータの１番目関数は、resolveに呼び出しされる。
+* Then()パラメータの２番目関数は、rejectに呼び出しされる。
+---
+# 例１：
+* resolve或いはrejectからthen上の関数の読み出しは非同期です。`setTimeout()`で実行する
+
+```js
+let p = new Promise((resolve) => {
+    console.log("ccc");
+    resolve("aaa");
+});
+
+p.then((value) => {
+    console.log(value);
+});
+console.log("bbb");
+
+```
+出力は：ccc,bbb,aaa
+
+---
+# 例２
+* resolve或いはreject一回のみ実行する。循環処理要注意、Callbackは一回しか実行しないです。
+
+```js
+let a =new Promise((resolve, reject) => {
+    let total = Math.floor(Math.random() * 100);
+    if(total % 2 === 0) {
+        resolve(total);
+    } else {
+        reject(total);
+    }
+    resolve(8); //無効。
+}).then((value) => {
+    console.log(`偶数:${value}`);
+},(value) => {
+    console.log(`奇数:${value}`);
+});
+
+```
+
+---
+# catch関数
+* catch関数のパラメータも関数です。
+* Promiseパラメータ関数中のソースコードが異常が発生する場合、catchの関数が実行される
+```js
+c = new Promise((resolve, reject) => {
+    throw new Error('aa');
+}).then((value) => {
+    console.log(value);
+}).catch((err) => {
+    console.log(err);
+})
+
+```
+---
+
+# 宿題
+<!-- _backgroundColor: #a5f7fa -->
+1. ５秒ごとにその時の時間を出力する。 Promiseで実現する。
+2. 赤の信号3秒ごとに点滅する，緑の信号が1秒ごとに点滅する，黄色の信号は2秒毎に点滅する一次；Promiseで３つの信号機が交替で点滅する
+
+
 
