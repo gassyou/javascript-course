@@ -14,21 +14,23 @@ function StaffSalary(name,basic,position,tax) {
     this.calculateNoTaxTotal = function () {
         return this.calculateTotal() - this.tax;
     }
-
-    function test() {
-        console.log("test");
-    }
+ 
+}
+StaffSalary.func = function () {
+    console.log("aaa");
+}
+StaffSalary.prototype.func1 = function () {
+    console.log("bbb");
 }
 
-StaffSalary.func = function() { //在构造函数的原型上添加方法
-    console.log("This is an static method.");
-}
+
 
 salaryData.forEach(item=>{
-    // let salarySalary = new StaffSalary(item.name,item.basic,item.position,item.tax);
-    let salarySalary = Object.assign(new StaffSalary(),item);
-    StaffSalary.func();
-    console.log(`${salarySalary.name} の給料総額金額：${salarySalary.calculateTotal()}元,手取り：${salarySalary.calculateNoTaxTotal()}元。`);
+    //  let salarySalary = new StaffSalary(item.name,item.basic,item.position,item.tax);
+     let salary = Object.assign(new StaffSalary(),item);
+     StaffSalary.func();
+     salary.func1();
+    console.log(`${salary.name} の給料総額金額：${salary.calculateTotal()}元,手取り：${salary.calculateNoTaxTotal()}元。`);
 });
 
 
